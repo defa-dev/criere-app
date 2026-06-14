@@ -358,7 +358,7 @@ export default function Home() {
           width: '100%'
         }}>
           <img
-            src="/images/hero/fazemos-impacto.png"
+            src="/images/hero/fazemos-impacto.svg"
             alt="Quem somos, o que fazemos e nosso impacto social"
             style={{
               width: '100%',
@@ -613,7 +613,7 @@ export default function Home() {
           width: '100%'
         }}>
           <img
-            src="/images/hero/apoiar-contatos-qr.png"
+            src="/images/hero/apoiar-contatos-qr.svg"
             alt="Como apoiar, QR Code e contatos do Projeto Crierê"
             style={{
               width: '100%',
