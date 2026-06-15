@@ -71,7 +71,7 @@ export default function Footer() {
               <Link href="/" style={{ color: 'white', textDecoration: 'none', fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)' }}>
                 Home
               </Link>
-              <Link href="/sobre" style={{ color: 'white', textDecoration: 'none', fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)' }}>
+              <Link href="/#sobre" style={{ color: 'white', textDecoration: 'none', fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)' }}>
                 Sobre
               </Link>
               <Link href="/participe" style={{ color: 'white', textDecoration: 'none', fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)' }}>
