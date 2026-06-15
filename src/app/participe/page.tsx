@@ -13,7 +13,7 @@ const funcoes = [
   },
   {
     titulo: 'Coordenador',
-    descricao: 'Acompanhe o desenvolvimento pedagógico dos alunos e apoie tutores na realização das tutorias.',
+    descricao: 'Acompanhe o desenvolvimento pedagógico dos alunos e apoie tutores na organização das tutorias.',
     foto: null,
     emoji: '💬',
     detalhe: 'Trabalho remoto',
@@ -26,7 +26,7 @@ const funcoes = [
   },
   {
     titulo: 'Operacional',
-    descricao: 'Atividades administrativas como divulgação, organização de eventos, escala e comunicação.',
+    descricao: 'Atividades administrativas como organização de eventos, escala de tutores, divulgação e comunicação.',
     foto: null,
     emoji: '⚙️',
     detalhe: 'Apoio geral',
