@@ -155,7 +155,7 @@ export default function Footer() {
             </p>
             <Link
               href="/participe"
-              className="btn btn-ghost-white"
+              className="btn btn-ghost-white btn-block-mobile"
             >
               Seja voluntário
             </Link>

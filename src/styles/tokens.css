@@ -135,6 +135,8 @@
   font-weight: 600;
   border-radius: var(--radius-md);
   padding: 11px 24px;
+  /* Touch target mínimo recomendado (WCAG 2.5.5 / Apple HIG) */
+  min-height: 44px;
   border: none;
   cursor: pointer;
   text-decoration: none;
@@ -181,6 +183,13 @@
 
 .btn-dark:hover {
   background: #162478;
+}
+
+/* Botões que ocupam a largura total no mobile (ergonomia de uma mão) */
+@media (max-width: 767px) {
+  .btn-block-mobile {
+    width: 100%;
+  }
 }
 
 /* Card Styles */
@@ -259,6 +268,21 @@
     --text-h2: 32px;
     --text-h3: 24px;
     --text-metric: 40px;
+  }
+}
+
+/*
+ * Leitura no mobile: parágrafos longos alinhados à esquerda.
+ * O cérebro busca o início da linha sempre na mesma margem — texto
+ * centralizado deixa a leitura mais lenta. Títulos curtos seguem centralizados.
+ */
+@media (max-width: 767px) {
+  .text-body {
+    text-align: left;
+  }
+
+  .mobile-text-left {
+    text-align: left !important;
   }
 }
 
