@@ -106,25 +106,29 @@ export default function Header() {
       <button
         className="mobile-menu-btn"
         onClick={toggleMenu}
+        aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+        aria-expanded={isMenuOpen}
+        aria-controls="mobile-menu"
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width: '40px',
-          height: '40px',
+          width: '44px',
+          height: '44px',
           background: 'none',
           border: 'none',
           cursor: 'pointer',
-          fontSize: '20px',
+          fontSize: '22px',
           color: 'var(--color-text-body)'
         }}
       >
-        {isMenuOpen ? '✕' : '☰'}
+        <span aria-hidden="true">{isMenuOpen ? '✕' : '☰'}</span>
       </button>
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div
+          id="mobile-menu"
           className="mobile-menu"
           style={{
             position: 'fixed',
@@ -135,18 +139,25 @@ export default function Header() {
             background: 'var(--color-trust)',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            alignItems: 'stretch',
             justifyContent: 'center',
-            gap: 'var(--space-lg)',
+            gap: 'var(--space-xs)',
+            padding: 'var(--space-xl) var(--space-lg)',
             zIndex: 1000
           }}
         >
           <button
             onClick={toggleMenu}
+            aria-label="Fechar menu"
             style={{
               position: 'absolute',
-              top: 'var(--space-md)',
-              right: 'var(--space-md)',
+              top: 'var(--space-sm)',
+              right: 'var(--space-sm)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '44px',
+              height: '44px',
               background: 'none',
               border: 'none',
               color: 'white',
@@ -154,7 +165,7 @@ export default function Header() {
               cursor: 'pointer'
             }}
           >
-            ✕
+            <span aria-hidden="true">✕</span>
           </button>
 
           {NAV_ITEMS.map((item) =>
@@ -163,25 +174,25 @@ export default function Header() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                style={{ fontFamily: 'var(--font-body)', fontSize: '24px', fontWeight: '600', color: 'white', textDecoration: 'none', padding: 'var(--space-sm) 0' }}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '52px', fontFamily: 'var(--font-body)', fontSize: '22px', fontWeight: '600', color: 'white', textDecoration: 'none' }}
               >
                 {item.label}
               </Link>
             ) : (
               <span
                 key={item.label}
-                style={{ fontFamily: 'var(--font-body)', fontSize: '24px', fontWeight: '600', color: 'white', opacity: 0.35, padding: 'var(--space-sm) 0' }}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '52px', fontFamily: 'var(--font-body)', fontSize: '22px', fontWeight: '600', color: 'white', opacity: 0.35 }}
               >
                 {item.label}
               </span>
             )
           )}
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)', marginTop: 'var(--space-lg)' }}>
-            <Link href="/doacao" className="btn btn-ghost-white" onClick={() => setIsMenuOpen(false)}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)', marginTop: 'var(--space-md)' }}>
+            <Link href="/doacao" className="btn btn-primary btn-block-mobile" onClick={() => setIsMenuOpen(false)}>
               Doe agora
             </Link>
-            <Link href="/participe" className="btn btn-ghost-white" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/participe" className="btn btn-ghost-white btn-block-mobile" onClick={() => setIsMenuOpen(false)}>
               Participe
             </Link>
           </div>

@@ -2,6 +2,7 @@
 
 import Header from '@/components/Header'
 import FooterNew from '@/components/FooterNew'
+import Carousel from '@/components/Carousel'
 
 const CAROUSEL_SLIDES = [
   { foto: '/images/galeria/capuera.png',      titulo: 'Acolhimento e escuta' },
@@ -13,8 +14,8 @@ const CAROUSEL_SLIDES = [
 function MobileCarousel() {
   return (
     <div className="mobile-carousel">
-      <div className="bento-carousel-track">
-        {[...CAROUSEL_SLIDES, ...CAROUSEL_SLIDES].map((slide, i) => (
+      <Carousel ariaLabel="Galeria de atividades do Crierê" autoPlayMs={4000}>
+        {CAROUSEL_SLIDES.map((slide, i) => (
           <div key={i} className="bento-carousel-card">
             <img
               src={slide.foto}
@@ -26,17 +27,11 @@ function MobileCarousel() {
             <h3 className="bento-carousel-title">{slide.titulo}</h3>
           </div>
         ))}
-      </div>
+      </Carousel>
 
       <style jsx>{`
-        @keyframes bento-scroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(calc(-260px * 4 - 16px * 4)); }
-        }
-
         .mobile-carousel {
           display: none;
-          overflow: hidden;
           width: 100%;
           margin-top: var(--space-md);
         }
@@ -45,18 +40,10 @@ function MobileCarousel() {
           .mobile-carousel { display: block; }
         }
 
-        .bento-carousel-track {
-          display: flex;
-          gap: 16px;
-          width: max-content;
-          animation: bento-scroll 18s linear infinite;
-        }
-
         .bento-carousel-card {
           position: relative;
-          flex: 0 0 auto;
-          width: 260px;
-          height: 320px;
+          width: min(82vw, 340px);
+          height: 380px;
           border-radius: var(--radius-lg);
           overflow: hidden;
           display: flex;
@@ -245,7 +232,7 @@ export default function Home() {
               justifyContent: 'center',
               flexWrap: 'wrap'
             }}>
-              <a href="/participe" className="btn btn-primary">
+              <a href="/participe" className="btn btn-primary btn-block-mobile">
                 Participe
               </a>
             </div>
@@ -352,8 +339,7 @@ export default function Home() {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <div style={{
-          margin: '0 var(--space-md)',
+        <div className="fullbleed-img" style={{
           maxWidth: '1200px',
           width: '100%'
         }}>
@@ -396,7 +382,7 @@ export default function Home() {
               }}>
                 Missão
               </h3>
-              <p style={{
+              <p className="mobile-text-left" style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--text-body)',
                 lineHeight: '1.6',
@@ -421,7 +407,7 @@ export default function Home() {
               }}>
                 Visão
               </h3>
-              <p style={{
+              <p className="mobile-text-left" style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--text-body)',
                 lineHeight: '1.6',
@@ -446,7 +432,7 @@ export default function Home() {
               }}>
                 Valores
               </h3>
-              <div style={{
+              <div className="mobile-text-left" style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--text-body)',
                 lineHeight: '1.6',
@@ -564,39 +550,26 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Carrossel Container */}
-          <div style={{
-            overflow: 'hidden',
-            position: 'relative'
-          }}>
-            <div
-              id="testimonials-carousel"
-              style={{
-                display: 'flex',
-                gap: 'var(--space-md)',
-                animation: 'scroll 20s linear infinite',
-                width: 'calc(220px * 12 + var(--space-md) * 11)'
-              }}
-            >
-              {[...testimonials, ...testimonials].map((t, i) => (
-                <div key={i} style={{ background: 'var(--color-surface)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)', width: '220px', flexShrink: 0, flexGrow: 0 }}>
-                  <div style={{ fontSize: '40px', color: 'var(--color-primary)', lineHeight: 1, marginBottom: 'var(--space-xs)' }}>&ldquo;</div>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-small)', lineHeight: '1.4', marginBottom: 'var(--space-md)', color: 'var(--color-text-body)' }}>
-                    {t.text}
-                  </p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
-                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: t.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '12px' }}>
-                      {t.initial}
-                    </div>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-small)', fontWeight: '600', margin: 0 }}>{t.author}</p>
-                      <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--color-text-secondary)', margin: 0 }}>Responsável</p>
-                    </div>
+          {/* Carrossel de depoimentos — com controles de voltar/avançar/pausar */}
+          <Carousel ariaLabel="Depoimentos de famílias e parceiros" autoPlayMs={5000}>
+            {testimonials.map((t, i) => (
+              <div key={i} style={{ background: 'var(--color-surface)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)', width: 'min(80vw, 300px)', boxSizing: 'border-box' }}>
+                <div style={{ fontSize: '40px', color: 'var(--color-primary)', lineHeight: 1, marginBottom: 'var(--space-xs)' }}>&ldquo;</div>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-small)', lineHeight: '1.5', marginBottom: 'var(--space-md)', color: 'var(--color-text-body)', textAlign: 'left' }}>
+                  {t.text}
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-xs)' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: t.color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '14px', flexShrink: 0 }}>
+                    {t.initial}
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-small)', fontWeight: '600', margin: 0 }}>{t.author}</p>
+                    <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', color: 'var(--color-text-secondary)', margin: 0 }}>Responsável</p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </section>
 
@@ -607,8 +580,7 @@ export default function Home() {
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <div style={{
-          margin: '0 var(--space-md)',
+        <div className="fullbleed-img" style={{
           maxWidth: '1200px',
           width: '100%'
         }}>
@@ -628,34 +600,14 @@ export default function Home() {
       <FooterNew />
 
       <style jsx>{`
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-10px);
-          }
-          60% {
-            transform: translateY(-5px);
-          }
+        /* Imagens full-bleed: margens menores no mobile para ganhar área útil */
+        .fullbleed-img {
+          margin: 0 var(--space-md);
         }
 
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-280px * 4 - var(--space-md) * 3));
-          }
-        }
-
-        #testimonials-carousel:hover {
-          animation-play-state: paused;
-        }
-
-        @media (max-width: 768px) {
-          #testimonials-carousel {
-            animation: scroll 15s linear infinite;
+        @media (max-width: 767px) {
+          .fullbleed-img {
+            margin: 0 var(--space-xs);
           }
         }
 

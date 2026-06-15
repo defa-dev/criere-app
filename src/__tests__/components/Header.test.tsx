@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Header from '@/components/Header'
 
@@ -43,19 +43,19 @@ describe('Header', () => {
     ctas.forEach((cta) => expect(cta).toHaveAttribute('href', '/doacao'))
   })
 
-  it('opens the mobile menu on ☰ click and shows nav links', async () => {
+  it('opens the mobile menu on hamburger click and shows nav links', async () => {
     render(<Header />)
-    await userEvent.click(screen.getByRole('button', { name: '☰' }))
+    await userEvent.click(screen.getByRole('button', { name: 'Abrir menu' }))
     // "Contribua" link should now be visible inside the overlay
     const contribuaLinks = screen.getAllByRole('link', { name: 'Contribua' })
     expect(contribuaLinks.length).toBeGreaterThan(0)
   })
 
-  it('closes the mobile menu when ✕ is clicked', async () => {
+  it('closes the mobile menu when the close button is clicked', async () => {
     render(<Header />)
-    await userEvent.click(screen.getByRole('button', { name: '☰' }))
-    // Two ✕ buttons exist: the main toggle and the overlay close — click first one to close
-    const closeBtns = screen.getAllByRole('button', { name: '✕' })
+    await userEvent.click(screen.getByRole('button', { name: 'Abrir menu' }))
+    // Two "Fechar menu" buttons exist while open: the main toggle and the overlay close
+    const closeBtns = screen.getAllByRole('button', { name: 'Fechar menu' })
     await userEvent.click(closeBtns[0])
     // Mobile menu content disappears (overlay not rendered)
     expect(screen.queryByText('Faça Parte')).not.toBeVisible()
