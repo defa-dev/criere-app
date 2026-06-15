@@ -354,7 +354,7 @@ export default function DoeAgora() {
 
           <div style={{ textAlign: 'center', marginTop: 'var(--space-lg)' }}>
             <a
-              href="/arquivos/PROPOSTA LIVRE.pdf"
+              href="https://docs.google.com/spreadsheets/d/1vxpflwV6guXpSQv4_x0SKsg4X_PWNEUM/edit?usp=sharing&ouid=104496602751597600494&rtpof=true&sd=true"
               target="_blank"
               rel="noopener noreferrer"
               className="doe-link"
