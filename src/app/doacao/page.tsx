@@ -318,7 +318,7 @@ export default function DoeAgora() {
       {/* Por que o Crierê? */}
       <section style={{ background: 'var(--color-surface)', padding: 'var(--space-xl) 0' }}>
         <div className="container">
-          <h2 style={{ fontFamily: 'var(--font-adumu)', fontSize: 'var(--text-h2)', color: 'var(--color-trust)', textAlign: 'center', margin: '0 0 var(--space-xl) 0' }}>
+          <h2 style={{ fontFamily: 'var(--font-adumu)', fontSize: 'var(--text-h2)', color: 'var(--color-accent)', textAlign: 'center', margin: '0 0 var(--space-xl) 0' }}>
             Por que o Crierê?
           </h2>
 
@@ -327,12 +327,12 @@ export default function DoeAgora() {
               {
                 icon: '📊',
                 titulo: 'Impacto real e mensurável',
-                texto: '85% dos responsáveis relatam melhora no desempenho escolar. Cada tutor acompanha o mesmo aluno ao longo do tempo — e isso faz toda a diferença.',
+                texto: 'Todos os responsáveis relatam melhora no desempenho escolar e sociabilidade. Cada tutor acompanha o mesmo aluno ao longo do tempo — e isso faz toda a diferença.',
               },
               {
                 icon: '🥁',
                 titulo: 'Educação e cultura, juntas',
-                texto: 'Não é só reforço escolar. São oficinas de capoeira, rap, teatro e arte que dizem para cada criança: a sua história importa.',
+                texto: 'Não é só reforço escolar. São oficinas de capoeira, rap, teatro e arte que estimulam a identidade e o imaginário de cada um.',
               },
               {
                 icon: '🤝',
@@ -354,7 +354,7 @@ export default function DoeAgora() {
 
           <div style={{ textAlign: 'center', marginTop: 'var(--space-lg)' }}>
             <a
-              href="/arquivos/PROPOSTA LIVRE.pdf"
+              href="https://docs.google.com/spreadsheets/d/1vxpflwV6guXpSQv4_x0SKsg4X_PWNEUM/edit?usp=sharing&ouid=104496602751597600494&rtpof=true&sd=true"
               target="_blank"
               rel="noopener noreferrer"
               className="doe-link"
